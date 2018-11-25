@@ -1,0 +1,26 @@
+{
+  "name": "timelinejs",
+  "version": "1.0.0",
+  "description": "Run scripts based on time",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jasmine --config=test/jasmine.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accidentallyc/TimelineJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/accidentallyc/TimelineJs/issues"
+  },
+  "homepage": "https://github.com/accidentallyc/TimelineJs#readme",
+  "dependencies": {
+    "jasmine": "^3.3.0"
+  }
+}
