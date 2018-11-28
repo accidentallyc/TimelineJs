@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/Timeline.js"></script>
+    <script type="text/javascript" src="../lib/RealtimeEngine.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <h1 id=h1></h1>
+
+    <script type="text/javascript">
+      $h1 = $(h1);
+      const tjs = new TimelineJs;
+      tjs
+        .setEngine(new RealtimeEngine)
+        .setFps(12)
+        .at(500,    ()=> $h1.html('500s'))
+        .at(1000,   ()=> $h1.html('1000s'))
+        .at(1500,   ()=> $h1.html('1500s'))
+        .at(2000,   ()=> $h1.html('2000s'))
+        .at("3s",   ()=> $h1.html('im a '))
+        .at("5s",   ()=> $h1.html('little teapot'))
+        .at("15s",  ()=> $h1.html('short and stout'))
+        .at("1m",   ()=> $h1.html('this is my handle, and this is my spout'))
+        .at("1m 2s", TimelineJs.STOP )
+        .start();
+
+    </script>
+  </body>
+</html>
