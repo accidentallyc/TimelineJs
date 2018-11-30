@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <script type="text/javascript" src="./assets/Timeline.js"></script>
+    <script type="text/javascript" src="./assets/RealtimeEngine.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <style type="text/css">
+      html, body {
+        font-family: arial;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: black;
+        background-image: url('./assets/ember.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:center bottom;
+      }
+      button {
+        width: 100%;
+        height: 100%;
+      }
+      p {
+        margin:0;
+        padding: 0;
+      }
+
+      #h1 {
+        background: rgba(0,0,0,0.5);
+        color: white;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+    </style>
+
+    <h1 id=h1></h1>
+
+    <button id=start onclick="doSomething()">Start</button>
+    <div id=sec></div>
+
+    <script type="text/javascript">
+      const tjs = new TimelineJs;
+      audio = new Audio('Norihiro Tsuru - Last Carnival (Short).mp3');
+      const $h1 = $(h1);
+
+      function doSomething() {
+        startShow();
+        $(start).hide();
+        // $(start).zhtml('🕒').css("fontSize",52);
+        window.doSomething = function () {
+          console.log(`.at(${tjs._engine._timeElapsed}, updateText("${currtext}"))`);
+        }
+      }
+
+      function startShow() {
+        // $(start).remove();
+        audio.play();
+        tjs.start();
+      }
+
+      let currtext= ':)';
+
+      function updateText (...args) {
+        return () => _updateText(...args);
+      }
+
+      let prevTextEl = null;
+      function _updateText(id,text,animTime = 700) {
+        let $el = $(`#txt${id}`);
+
+  
+        if($el.length == 0) {
+          if( prevTextEl ) {
+            prevTextEl.delay(1000).fadeOut(1000);
+          }
+        
+
+          $el = $(`<div id="txt${id}">${text}</div>`).hide();
+          $h1.prepend($el);
+          $el.fadeIn(animTime);
+          prevTextEl=$el;
+        } else {
+          $new = $(`<span>&nbsp;${text}</span>`).hide();
+          $el.append($new);
+          $new.fadeIn(animTime == 700 ? 500: 100);
+        }
+
+
+      }
+
+      tjs
+        .setEngine(new RealtimeEngine)
+        .setFps(24)
+        .at(8200,   updateText(1,"The gentle ember"))
+        .at(10700,  updateText(1,"lights the dark"))
+        .at(12678,  updateText(2,"From the kindling you made"))
+        .at(15000,  updateText(2,"in me"))
+        .at(16500,  updateText(3,"The tender flame"))
+        .at(19400,  updateText(4,"Melts the snow on the trees"))
+        .at(25100,  updateText(5,"The Christmas glow"))
+        .at(27100,  updateText(5,", the icey park"))
+        .at(29200,  updateText(6,"The winter"))
+        .at(30460,  updateText(6,"that's come to be"))
+        .at(33000,  updateText(7,"It's the season of joy"))
+        .at(35900,  updateText(8,"But I cannot be happy"))
+        
+        .at(41000,  updateText(9,"Is it all because of"))
+
+        .at(41910, updateText(10,"The times we were talking","show"))
+        .at(43548, updateText(11,"Both walking","show"))
+        .at(44714, updateText(12,"The clock slowing down","show"))
+        .at(45950, updateText(13,"All of our fears ","show"))
+        .at(47628, updateText(14,"We're hiding ","show"))
+        .at(48678, updateText(15,"Come open and ... out","show"))
+
+        .at(50316, updateText(16,"All the moments","show"))
+        .at(51828, updateText(17,"The gossips","show"))
+        .at(52878, updateText(18,"The secret we hold","show"))
+        .at(54642, updateText(19,"The laughter","show"))
+        .at(55860, updateText(19,",the fun and","show"))
+        .at(56952, updateText(20,"the words we have told","show"))
+        .at(59808, updateText(21,"...we have told","show"))
+
+        .at(62286, updateText(22,"All the lies I say unfold")) 
+        .at(66234, updateText(23,"If there's one thing")) 
+        .at(69048, updateText(23,"that's true.")) 
+        .at(71616, updateText(24,"XXX"))
+        .at(78000, updateText(25,""))
+        .at(78500, updateText(26,""))
+        .at(79500, updateText(27,""))
+
+    </script>
+  </body>
+</html>
